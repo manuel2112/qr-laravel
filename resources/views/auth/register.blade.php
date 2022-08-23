@@ -7,7 +7,9 @@
         <x-jet-validation-errors class="mb-3" />
 
         <div class="card-body">
-            <form method="POST" action="{{ route('register') }}" novalidate>
+            
+            <livewire:crear-registro />
+            {{-- <form method="POST" action="{{ route('register') }}" novalidate>
                 @csrf
 
                 <div class="mb-3">
@@ -71,7 +73,7 @@
                         </x-jet-button>
                     </div>
                 </div>
-            </form>
+            </form> --}}
         </div>
     </x-jet-authentication-card>
 </x-guest-layout>
