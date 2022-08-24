@@ -40,7 +40,6 @@
                 :value="old('direccion')" 
                 required />
             <x-jet-input-error for="direccion"></x-jet-input-error>
-            <x-jet-input-error for="region"></x-jet-input-error>
         </div>
 
         <div class="mb-3">
@@ -78,7 +77,7 @@
         @endif
 
         <div class="mb-3">
-            <x-jet-label for="telefono" value="{{ __('Teléfono') }}" />
+            <x-jet-label for="telefono" value="{{ __('Teléfono (9 Dígitos)') }}" />
             <x-jet-input 
                 type="text"  
                 class="{{ $errors->has('telefono') ? 'is-invalid' : '' }}"
