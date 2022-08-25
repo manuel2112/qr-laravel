@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
 
 class CrearRegistro extends Component
 {
@@ -54,7 +52,7 @@ class CrearRegistro extends Component
 
         //INGRESAR DATA EMPRESA
         $referido = $this->referido ? $this->referido : $this->cuentanos;
-        Empresa::create([
+        $empresa = Empresa::create([
             'user_id'       => $user->id,
             'direccion'     => Str::upper($this->direccion),
             'fono'          => $this->telefono,
@@ -65,7 +63,7 @@ class CrearRegistro extends Component
         ]);
 
         // //CREATE QR
-        // create_qr($idEmpresa);
+        create_qr($empresa);
 
         // //INSTANCIAR MENÚ
         // $this->instanciarMenu($idEmpresa);

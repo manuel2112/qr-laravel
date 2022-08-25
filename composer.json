@@ -11,7 +11,8 @@
         "laravel/jetstream": "^2.11",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.10"
+        "livewire/livewire": "^2.10",
+        "werneckbh/laravel-qr-code": "^0.1.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -29,7 +30,12 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/qr_helper.php",
+            "app/Helpers/file_helper.php",
+            "app/Helpers/base_helper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
