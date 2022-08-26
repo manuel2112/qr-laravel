@@ -66,7 +66,7 @@ class CrearRegistro extends Component
         create_qr($empresa);
 
         // //INSTANCIAR MENÚ
-        // $this->instanciarMenu($idEmpresa);
+        menuInstanciarEmpresa($empresa);
 
         // //REGALAR PLAN PLATA
         // instanciarPlan($idEmpresa,$ingreso,2);
@@ -87,7 +87,7 @@ class CrearRegistro extends Component
     }
 
     public function updatedRegion($region){
-        $this->ciudades = Commune::where('region_id',$region)->get();
+        $this->ciudades = Commune::where('region_id',$region)->orderBy('name', 'asc')->get();
     }
 
     public function updatedCuentanos($referido){

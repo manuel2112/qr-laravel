@@ -34,7 +34,8 @@
         "files": [
             "app/Helpers/qr_helper.php",
             "app/Helpers/file_helper.php",
-            "app/Helpers/base_helper.php"
+            "app/Helpers/base_helper.php",
+            "app/Helpers/instanciar_helper.php"
         ]
     },
     "autoload-dev": {
