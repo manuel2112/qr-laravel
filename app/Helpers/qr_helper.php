@@ -9,13 +9,13 @@ if (! function_exists('create_qr')) {
     {
         $idEmpresa  = $empresa->user_id;
         $url        = urlQR().$empresa->slug;
-        $directorio = "../storage/public/empresas/".$idEmpresa."/qr/";
-        createDir($directorio);        
+        $directorio = public_path('uploads/empresas/') .$idEmpresa."/qr/" ;
+        createDir($directorio);
 
         $nameFile = 'qr-'.Str::uuid().'.png';
         $pathFile = $idEmpresa."/qr/".$nameFile;
 
-        $qrImg = public_path($directorio . $nameFile); 
+        $qrImg = $directorio . $nameFile; 
         QRCode::text($url)
                 ->setSize(480)
                 ->setMargin(1)

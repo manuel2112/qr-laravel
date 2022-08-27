@@ -62,14 +62,14 @@ class CrearRegistro extends Component
             'slug'          => $this->empresa
         ]);
 
-        // //CREATE QR
+        //CREATE QR
         create_qr($empresa);
 
-        // //INSTANCIAR MENÚ
+        //INSTANCIAR MENÚ
         menuInstanciarEmpresa($empresa);
 
-        // //REGALAR PLAN PLATA
-        // instanciarPlan($idEmpresa,$ingreso,2);
+        //REGALAR PLAN PLATA
+        instanciarPlan($empresa,2);
 
         event(new Registered($user));
 

@@ -35,7 +35,10 @@
             "app/Helpers/qr_helper.php",
             "app/Helpers/file_helper.php",
             "app/Helpers/base_helper.php",
-            "app/Helpers/instanciar_helper.php"
+            "app/Helpers/instanciar_helper.php",
+            "app/Helpers/plan_helper.php",
+            "app/Helpers/date_helper.php",
+            "app/Helpers/log_helper.php"
         ]
     },
     "autoload-dev": {

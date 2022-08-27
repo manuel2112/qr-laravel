@@ -22,7 +22,6 @@ class CommuneRegionSeeder extends Seeder
     }
     public function insertRegions(): void
     {
-        $now = \Carbon\Carbon::now();
         $regions = [
             [1, 'Arica y Parinacota', 'XV'],
             [2, 'Tarapacá', 'I'],
@@ -41,14 +40,14 @@ class CommuneRegionSeeder extends Seeder
             [15, 'Aisén del General Carlos Ibáñez del Campo', 'XI'],
             [16, 'Magallanes y de la Antártica Chilena', 'XII']
         ];
-        $regions = array_map(function ($region) use ($now)  {
+        $regions = array_map(function ($region) {
             return [
                 'id' => $region[0],
                 'order' => $region[0],
                 'name' => $region[1],
                 'ordinal_symbol' => $region[2],
-                'updated_at' => $now,
-                'created_at' => $now,
+                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => date('Y-m-d H:i:s'),
             ];
         }, $regions);
 
@@ -61,7 +60,6 @@ class CommuneRegionSeeder extends Seeder
      */
     public function insertCommunes(): void
     {
-        $now = \Carbon\Carbon::now();
         $communes = [
             ['Arica', 1],
             ['Camarones', 1],
@@ -410,12 +408,12 @@ class CommuneRegionSeeder extends Seeder
             ['Torres del Paine', 16],
             ['Cabildo', 6],
         ];
-        $communes = array_map(function ($commune) use ($now)  {
+        $communes = array_map(function ($commune) {
             return [
                 'name' => $commune[0],
                 'region_id' => $commune[1],
-                'updated_at' => $now,
-                'created_at' => $now,
+                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => date('Y-m-d H:i:s'),
             ];
         }, $communes);
         //App\Commune::insert($data); // Eloquent approach
