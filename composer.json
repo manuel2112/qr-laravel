@@ -38,7 +38,8 @@
             "app/Helpers/instanciar_helper.php",
             "app/Helpers/plan_helper.php",
             "app/Helpers/date_helper.php",
-            "app/Helpers/log_helper.php"
+            "app/Helpers/log_helper.php",
+            "app/Helpers/Slug.php"
         ]
     },
     "autoload-dev": {

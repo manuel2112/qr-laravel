@@ -14,6 +14,9 @@
                 <x-jet-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                     {{ __('HOME') }}
                 </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('empresa.index') }}" :active="request()->routeIs('empresa.index')">
+                    {{ __('EMPRESA') }}
+                </x-jet-nav-link>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -78,11 +81,11 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <h6 class="dropdown-header small text-muted">
-                                {{ __('Manage Account') }}
+                                {{ __('Mis Datos') }}
                             </h6>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Mi perfil') }}
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -95,9 +98,9 @@
 
                             <!-- Authentication -->
                             <x-jet-dropdown-link href="{{ route('logout') }}"
-                                                 onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                {{ __('Log out') }}
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Cerrar Sesión') }}
                             </x-jet-dropdown-link>
                             <form method="POST" id="logout-form" action="{{ route('logout') }}">
                                 @csrf

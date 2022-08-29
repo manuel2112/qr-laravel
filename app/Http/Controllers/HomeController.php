@@ -9,8 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index(){
+    // protected $id;
 
+    // public function __construct()
+    // {
+    //     $this->id = Auth::id(); 
+    //     dd($this->id);       
+    // }
+
+    public function index()
+    {
         $idUser = Auth::id();
         
         $empresa = Empresa::where(['user_id' => $idUser])->first();

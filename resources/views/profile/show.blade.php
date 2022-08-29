@@ -18,7 +18,7 @@
             <x-jet-section-border />
         @endif
 
-        @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+        {{-- @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
             @livewire('profile.two-factor-authentication-form')
 
             <x-jet-section-border />
@@ -30,6 +30,6 @@
             <x-jet-section-border />
 
             @livewire('profile.delete-user-form')
-        @endif
+        @endif --}}
     </div>
 </x-app-layout>
