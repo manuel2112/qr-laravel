@@ -52,7 +52,15 @@ class Slug
         // Normalize the title
         //check title contains unicode character
         if (strlen($title) != strlen(utf8_decode($title))) {
-            $slug = preg_replace("#(\p{P}|\p{C}|\p{S}|\p{Z})+#u", "-", $title);
+            // $slug = preg_replace("#(\p{P}|\p{C}|\p{S}|\p{Z})+#u", "-", $title);
+            $divider = '-';
+            $text = preg_replace('~[^\pL\d]+~u', $divider, $title);
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+            $text = preg_replace('~[^-\w]+~', '', $text);
+            $text = trim($text, $divider);
+            $text = preg_replace('~-+~', $divider, $text);
+            $text = strtolower($text);
+            $slug = $text;
         }else {
             $slug = Str::slug($title);
         }

@@ -153,9 +153,12 @@
 
                     <div class="modal-footer">
                         <x-jet-button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            Close
+                            Cerrar
                         </x-jet-button>
                         <x-jet-button class="btn btn-primary">
+                            <div wire:loading class="spinner-border spinner-border-sm" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
                             Editar
                         </x-jet-button>
                     </div>

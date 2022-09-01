@@ -11,7 +11,7 @@ class EmpresaController extends Controller
 {
     public function index()
     {
-        $idUser = Auth::id();
+        $idUser  = Auth::id();
         $empresa = Empresa::where(['user_id' => $idUser])->first();
         $comuna  = Commune::where(['id' => $empresa->ciudad_id])->first();
         

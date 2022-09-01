@@ -7,7 +7,6 @@ use App\Models\Region;
 use App\Models\Commune;
 use App\Models\Empresa;
 use Livewire\Component;
-use Illuminate\Support\Facades\Request;
 
 class EditEmpresa extends Component
 {
@@ -65,20 +64,14 @@ class EditEmpresa extends Component
         $this->ciudad = '';
     }
 
-    //https://gist.github.com/shibbirweb/84f0ab7c9f74fe02e8347531557b645b
-    // public function store(Request $request)
-    // {
-    // //Create slug
-    // $post->slug = Slug::instance(Post::class, 'slug')->createSlug($request->title); // circular slug
-    // }
-
-    public function update($empresa,$id)
+    public function updateSlug($empresaNombre,$id)
     {
-        return Slug::instance(Empresa::class, 'slug')->createSlug($empresa, $id);
+        return Slug::instance(Empresa::class, 'slug')->createSlug($empresaNombre, $id);
     }
 
     public function editEmpresa(){
         $this->validate();
+
         Empresa::where('user_id', auth()->user()->id)
                 ->update([
                     'empresa'       => $this->empresa,
@@ -90,9 +83,10 @@ class EditEmpresa extends Component
                     'facebook'      => $this->facebook,
                     'instagram'     => $this->instagram,
                     'descripcion'   => $this->descripcion,
-                    'slug'          => $this->update($this->empresa,$this->idEmpresa)
+                    'slug'          => $this->updateSlug($this->empresa,$this->idEmpresa)
                 ]);
 
+        session()->flash('mensaje','Los datos de tu empresa se han editado exitosamente');
         return redirect()->route('empresa.index');
     }
 }

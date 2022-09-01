@@ -2,29 +2,51 @@
 
 use App\Models\QR;
 use Illuminate\Support\Str;
-use LaravelQRCode\Facades\QRCode;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
 
 if (! function_exists('create_qr')) {
-    function create_qr($empresa)
+    function create_qr($pathImg, $empresa)
     {
-        $idEmpresa  = $empresa->user_id;
-        $url        = urlQR().$empresa->slug;
-        $directorio = public_path('uploads/empresas/') .$idEmpresa."/qr/" ;
-        createDir($directorio);
+        //https://github.com/endroid/qr-code
 
-        $nameFile = 'qr-'.Str::uuid().'.png';
-        $pathFile = $idEmpresa."/qr/".$nameFile;
+        $writer = new PngWriter();
 
-        $qrImg = $directorio . $nameFile; 
-        QRCode::text($url)
-                ->setSize(480)
-                ->setMargin(1)
-                ->setOutfile($qrImg)
-                ->png();
+        // Create QR code
+        $qrCode = QrCode::create(urlQR().$empresa->slug)
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+            ->setSize(496)
+            ->setMargin(2)
+            ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin(false))
+            ->setForegroundColor(new Color(0, 0, 0))
+            ->setBackgroundColor(new Color(255, 255, 255));
+        
+        // Create generic logo
+        $logo = Logo::create($pathImg)->setResizeToWidth(100);
+        
+        $result = $writer->write($qrCode, $logo);
+
+        header('Content-Type: '.$result->getMimeType());
+
+        // Save it to a file
+        $nmbImg = 'qr-' . Str::uuid() . '.png';
+        $path = 'uploads/empresas/'.$empresa->id.'/qr/'.$nmbImg;
+        $result->saveToFile(public_path($path));
+
+        QR::where( 'user_id' ,$empresa->user_id)
+                ->update([
+                    'flag'  => FALSE
+                ]);
 
         QR::create([
             'user_id'   => $empresa->user_id,
-            'qr'        => $pathFile
+            'qr'        => $path
         ]);
     }
 }

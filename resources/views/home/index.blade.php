@@ -31,12 +31,12 @@
                     
                         <div class="row">
                             <div class="col-md-8 offset-md-2">
-                                <img src="{{ asset('uploads/empresas/' . $qr->qr) }}" alt="{{ $empresa->empresa }}" class="img-fluid w-100" />
+                                <img src="{{ asset($qr->qr) }}" alt="{{ $empresa->empresa }}" class="img-fluid w-100" />
 
                                 @if ( $empresa->membresia )
                                     <div class="row justify-content-center">
                                         <a 
-                                            href="#"
+                                            href="{{ route('empresa.index') }}"
                                             class="btn btn-primary btn-block btn-lg"
                                             v-if=" !empresa.EMPRESA_LOGOTIPO ">
                                             <strong>PERSONALIZA TU QR INGRESANDO TU LOGOTIPO AQUI</strong>

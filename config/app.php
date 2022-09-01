@@ -197,6 +197,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        LaravelQRCode\Providers\QRCodeServiceProvider::class
 
     ],
 
@@ -213,6 +215,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'QRCode' => LaravelQRCode\Facades\QRCode::class,
+        'Image' => 'Intervention\Image\Facades\Image'
     ])->toArray(),
 
 ];

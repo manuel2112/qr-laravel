@@ -13,6 +13,12 @@
             <div class="card shadow bg-light">
                 <div class="card-body bg-white px-5 py-1 border-bottom rounded-top">
                     <div class="mx-3 my-1">
+
+                        @if (session()->has('mensaje'))
+                            <x-alert type="success">
+                                {{ session('mensaje'); }}
+                            </x-alert>                            
+                        @endif
 		
                         <div class="col-12 text-center">
                             @if ( $empresa->logotipo )
@@ -21,7 +27,7 @@
                                 <img v-else src="{{ asset('images/default.png') }}" class="img-thumbnail" width="auto">                                
                             @endif
                             <br>
-                            <a href="#" class="btn btn-primary mt-2" target="_blank">MENÚ</a>
+                            <a href="{{ urlQR().$empresa->slug }}" class="btn btn-primary mt-2" target="_blank">VER MENÚ</a>
                         </div>
 
                         <div class="col-12">
@@ -67,22 +73,47 @@
                                         <td>{{ $empresa->instagram }}</td>
                                     </tr>
                                 </table>
+
+                                @if ( $empresa->membresia )                
+                                    <button 
+                                        type="button"
+                                        class="btn btn-warning" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#mdlEditEmpresa">
+                                        <strong>EDITAR DATOS DE LA EMPRESA</strong>
+                                    </button>                                    
+                                @else
+                                    <a href="#" class="btn btn-danger" v-else>
+                                        <strong>
+                                            RENOVAR MEMBRESÍA 
+                                            <i class="fa fa-chevron-right"></i>
+                                            <i class="fa fa-chevron-right"></i>
+                                        </strong>
+                                    </a>
+                                @endif
                 
-                                <button 
-                                    type="button"
-                                    class="btn btn-warning" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#mdlEditEmpresa">
-                                    <strong>EDITAR DATOS DE LA EMPRESA</strong>
-                                </button>
-                                {{-- <a href="<?php echo base_url()?>pagos" class="btn btn-danger" v-else>
-                                    <strong>
-                                        RENOVAR MEMBRESÍA 
-                                        <i class="fa fa-chevron-right"></i>
-                                        <i class="fa fa-chevron-right"></i>
-                                    </strong>
-                                </a> --}}
-                
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>LOGOTIPO</legend>
+
+                                @if ( $empresa->membresia )
+                                    <button 
+                                        class="btn btn-warning" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#mdlEditLogo">
+                                        <strong>EDITAR LOGOTIPO</strong>
+                                    </button>                                  
+                                @else
+                                    <a href="#" class="btn btn-danger" v-else>
+                                        <strong>
+                                            RENOVAR MEMBRESÍA 
+                                            <i class="fa fa-chevron-right"></i>
+                                            <i class="fa fa-chevron-right"></i>
+                                        </strong>
+                                    </a>
+                                @endif
+                                
                             </fieldset>
 
                         </div>
@@ -94,6 +125,7 @@
     </div>
 
     <livewire:edit-empresa :empresa="$empresa" />
+    <livewire:edit-logo :empresa="$empresa" />
   
 
 </x-app-layout>

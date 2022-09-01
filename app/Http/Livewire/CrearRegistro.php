@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Helpers\Slug;
 use App\Models\Region;
 use App\Models\Commune;
 use App\Models\Empresa;
@@ -26,6 +27,7 @@ class CrearRegistro extends Component
     public $password_confirmation;
     public $cuentanos;
     public $referido;
+    public $slug;
     public $ciudades = null;
     public $isReferido = false;
 
@@ -50,26 +52,29 @@ class CrearRegistro extends Component
             'password'  => Hash::make($this->password),
         ]);
 
-        //INGRESAR DATA EMPRESA
+        //INSTANCIAR DATOS
+        $this->slug = $this->createSlug($this->empresa);
         $referido = $this->referido ? $this->referido : $this->cuentanos;
-        $empresa = Empresa::create([
+
+        //INGRESAR DATA EMPRESA
+        $empresaData = Empresa::create([
             'user_id'       => $user->id,
             'direccion'     => Str::upper($this->direccion),
             'fono'          => $this->telefono,
             'empresa'       => $this->empresa,
             'ciudad_id'     => $this->ciudad,
             'referido'      => Str::upper($referido),
-            'slug'          => $this->empresa
+            'slug'          => $this->slug
         ]);
 
         //CREATE QR
-        create_qr($empresa);
+        create_qr('', $empresaData);
 
         //INSTANCIAR MENÚ
-        menuInstanciarEmpresa($empresa);
+        menuInstanciarEmpresa($empresaData);
 
         //REGALAR PLAN PLATA
-        instanciarPlan($empresa,2);
+        instanciarPlan($empresaData,2);
 
         event(new Registered($user));
 
@@ -96,5 +101,10 @@ class CrearRegistro extends Component
         }else{
             $this->isReferido = false;
         }
+    }
+
+    public function createSlug($empresaNombre)
+    {
+        return Slug::instance(Empresa::class, 'slug')->createSlug($empresaNombre);
     }
 }
