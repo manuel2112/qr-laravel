@@ -35,14 +35,15 @@
 
                                 @if ( $empresa->membresia )
                                     <div class="row justify-content-center">
-                                        <a 
-                                            href="{{ route('empresa.index') }}"
-                                            class="btn btn-primary btn-block btn-lg"
-                                            v-if=" !empresa.EMPRESA_LOGOTIPO ">
-                                            <strong>PERSONALIZA TU QR INGRESANDO TU LOGOTIPO AQUI</strong>
-                                        </a>
-
-                                        <br>
+                                        @if ( !$empresa->logotipo )
+                                            <a 
+                                                href="{{ route('empresa.index') }}"
+                                                class="btn btn-primary btn-block btn-lg"
+                                                v-if=" !empresa.EMPRESA_LOGOTIPO ">
+                                                <strong>PERSONALIZA TU QR INGRESANDO TU LOGOTIPO AQUI</strong>
+                                            </a>
+                                            <br>
+                                        @endif
                         
                                         <a 
                                             href="{{ asset('uploads/empresas/' . $qr->qr) }}" 

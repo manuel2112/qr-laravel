@@ -11,13 +11,8 @@ use Intervention\Image\Facades\Image;
 class EditLogo extends Component
 {
     public $empresa;
-    public $logotipo;
 
     use WithFileUploads;
-
-    protected $rules = [
-        'logotipo'  => 'required|image|max:1024'
-    ];
 
     protected $listeners = ['deleteLogotipo'];
 
@@ -26,24 +21,11 @@ class EditLogo extends Component
         return view('livewire.edit-logo');
     }
 
-    public function editLogo(){
-        $this->validate();
-
-        $path = uploadImage($this->logotipo, $this->empresa->id, TRUE);
+    public function deleteLogotipo(Empresa $empresa){
 
         //UPDATE QR
-        create_qr($path, $this->empresa);
+        create_qr( null, $this->empresa);
 
-        Empresa::where( 'id' ,$this->empresa->id)
-                ->update([
-                    'logotipo'  => $path
-                ]);
-
-        session()->flash('mensaje','El logotipo ha sido ingresado exitosamente');
-        return redirect()->route('empresa.index');
-    }
-
-    public function deleteLogotipo(Empresa $empresa){
         Empresa::where( 'id' ,$empresa->id)
                 ->update([
                     'logotipo'  => NULL

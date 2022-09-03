@@ -28,9 +28,12 @@ if (! function_exists('create_qr')) {
             ->setBackgroundColor(new Color(255, 255, 255));
         
         // Create generic logo
-        $logo = Logo::create($pathImg)->setResizeToWidth(100);
-        
-        $result = $writer->write($qrCode, $logo);
+        if( $pathImg ){
+            $logo = Logo::create($pathImg)->setResizeToWidth(100);
+            $result = $writer->write($qrCode, $logo);
+        }else{
+            $result = $writer->write($qrCode);
+        }
 
         header('Content-Type: '.$result->getMimeType());
 

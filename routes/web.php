@@ -23,5 +23,6 @@ Route::get('/', [HomeController::class, 'index'])->middleware(['auth','verified'
 Route::get('/home', [HomeController::class, 'index'])->middleware(['auth','verified'])->name('home');
 
 Route::get('/empresa', [EmpresaController::class, 'index'])->middleware(['auth','verified'])->name('empresa.index');
+Route::post('/empresa/upload', [EmpresaController::class, 'uploadCropImage'])->name('empresa.uploadimage');
 
 require __DIR__.'/auth.php';

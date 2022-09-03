@@ -8,7 +8,8 @@ if(!function_exists('uploadImage'))
 	function uploadImage($img, $idEmpresa, $isLogo)
 	{
         $image  = $img;
-        $extImg = $image->getClientOriginalExtension();
+        $extImg = pathinfo($image, PATHINFO_EXTENSION);;
+        // $extImg = $image->getClientOriginalExtension();
         $nmbImg = 'logo-' . Str::uuid() . '.' .$extImg;
         $pathDB = 'uploads/empresas/'.$idEmpresa.'/logotipo/'.$nmbImg ;
         $path   = public_path($pathDB);
@@ -21,7 +22,7 @@ if(!function_exists('uploadImage'))
             $canvas = Image::canvas($width, $height, '#fff');
         }        
 
-        $image = Image::make($image->getRealPath())->resize($width, $height, function($constraint)
+        $image = Image::make($image)->resize($width, $height, function($constraint)
         {
             $constraint->aspectRatio();
         });
