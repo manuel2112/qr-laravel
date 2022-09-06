@@ -46,7 +46,7 @@
                                     </tr>
                                     <tr>
                                         <td class="table-primary">CIUDAD</td>
-                                        <td>{{ $comuna->name }}</td>
+                                        <td>{{ $empresa->ciudad->name }}</td>
                                     </tr>
                                     <tr>
                                         <td class="table-primary">FONO</td>

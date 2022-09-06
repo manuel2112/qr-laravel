@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +25,8 @@ Route::get('/home', [HomeController::class, 'index'])->middleware(['auth','verif
 
 Route::get('/empresa', [EmpresaController::class, 'index'])->middleware(['auth','verified'])->name('empresa.index');
 Route::post('/empresa/upload', [EmpresaController::class, 'uploadCropImage'])->name('empresa.uploadimage');
+
+Route::get('/menu', MenuController::class )->middleware(['auth','verified'])->name('menu.index');
+Route::post('/menu/upload-grupo', [MenuController::class, 'uploadGrupoImg'])->name('empresa.uploadGrupoImg');
 
 require __DIR__.'/auth.php';

@@ -7,20 +7,14 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EmpresaController extends Controller
-{
-    
-    public function index()
-    {
-        $idUser  = Auth::id();
-        $empresa = Empresa::where(['user_id' => $idUser])->first();
-        
-        return view('empresa.index', [
-            'empresa' => $empresa
-        ]);
+class MenuController extends Controller
+{    
+    public function __invoke()
+    {        
+        return view('menu.index');
     }
     
-    public function uploadCropImage(Request $request){
+    public function uploadGrupoImg(Request $request){
         
         $images = $request->isNormal == 'true' ? $request->imageNormal : $request->imageCrop ;
         
@@ -42,16 +36,6 @@ class EmpresaController extends Controller
         file_put_contents($pathTh, $images);
 
         $path = uploadImage($pathTh, $empresa->id, TRUE);
-
-        //UPDATE QR
-        create_qr($path, $empresa);
-
-        Empresa::where( 'id' ,$empresa->id)
-                ->update([
-                    'logotipo'  => $path
-                ]);
-
-        session()->flash('mensaje','El logotipo ha sido ingresado exitosamente');
-        return response()->json(['url'=> route('empresa.index') ]);
+        return response()->json(['path'=> $path ]);
     }
 }

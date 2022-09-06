@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
+use App\Models\Commune;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -19,4 +19,8 @@ class Empresa extends Model
         'referido',
         'slug',
     ];
+
+    public function ciudad(){
+        return $this->belongsTo(Commune::class);
+    }
 }
