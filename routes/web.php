@@ -27,6 +27,7 @@ Route::get('/empresa', [EmpresaController::class, 'index'])->middleware(['auth',
 Route::post('/empresa/upload', [EmpresaController::class, 'uploadCropImage'])->name('empresa.uploadimage');
 
 Route::get('/menu', MenuController::class )->middleware(['auth','verified'])->name('menu.index');
-Route::post('/menu/upload-grupo', [MenuController::class, 'uploadGrupoImg'])->name('empresa.uploadGrupoImg');
+Route::post('/menu/upload-img-grupo', [MenuController::class, 'uploadgrupoimg'])->name('menu.uploadgrupoimg');
+Route::post('/menu/upload-img-producto', [MenuController::class, 'uploadproductoimg'])->name('menu.uploadproductoimg');
 
 require __DIR__.'/auth.php';

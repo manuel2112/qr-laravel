@@ -18,9 +18,6 @@ class MenuOrderGrupo extends Component
         return view('livewire.menu-order-grupo');
     }
 
-    public function mount(){
-    }
-
     public function orderGrupo(){
         $i = 1;
         foreach( $this->grupos as $grupo ){

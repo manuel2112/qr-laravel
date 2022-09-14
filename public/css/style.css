@@ -705,3 +705,8 @@ MODAL
 .jcrop-keymgr{
     display: none !important;
 }
+
+small{
+    font-size: 0.8rem;
+    line-height: 5px !important;
+}

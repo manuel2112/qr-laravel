@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Producto;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Grupo extends Model
 {
@@ -14,4 +15,8 @@ class Grupo extends Model
         'grupo',
         'img',
     ];
+
+    public function producto(){
+        return $this->hasMany(Producto::class)->where('flag', TRUE)->orderBy('order', 'asc');
+    }
 }

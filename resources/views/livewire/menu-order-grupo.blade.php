@@ -66,48 +66,5 @@
             })
         </script>
         <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
-        <script>
-            $(document).ready(function() {
-                // const root = document.querySelector('[drag-root]');
-
-                // root.querySelectorAll('[drag-item]').forEach(el => {
-
-                //     el.addEventListener('dragstart', e => {
-                //         e.target.setAttribute('dragging', true);
-                //         console.log('star')
-                //     })
-
-                //     el.addEventListener('drop', e => {
-                //         e.target.classList.remove('active');
-                //         console.log('drop')
-                //         let draggingEl = root.querySelector('[dragging]');
-                //         e.target.before(draggingEl);
-                        
-                //         let orderedIds = Array.from(root.querySelectorAll('[drag-item]')).
-                //                             map(itemEl => itemEl.getAttribute('drag-item'));
-                                            
-                //         Livewire.emit('reorder', orderedIds)
-                //     })
-
-                //     el.addEventListener('dragenter', e => {
-                //         e.target.classList.add('active');
-                //         console.log('enter')
-                //         e.preventDefault();
-                //     })
-
-                //     el.addEventListener('dragover', e => e.preventDefault() )
-
-                //     el.addEventListener('dragleave', e => {
-                //         console.log('leave')
-                //         e.target.classList.remove('active');
-                //     })
-
-                //     el.addEventListener('dragend', e => {
-                //         e.target.removeAttribute('dragging');
-                //         console.log('end')
-                //     })
-                // });
-            }); //FIN DOCUMENT
-        </script>
     @endpush
 </div>
