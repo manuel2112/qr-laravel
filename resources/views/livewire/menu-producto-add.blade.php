@@ -461,11 +461,14 @@
     
     @push('scripts')
         <script>
+            let imgProductoInsSelect = '';
+
             window.addEventListener('closeModals', event => {
                 $("#mdlProductoPaso01").modal('hide');
                 $("#mdlProductoPaso02").modal('hide');
                 $("#mdlProductoPaso03").modal('hide');
                 $("#mdlProductoPaso04").modal('hide');
+                imgProductoInsSelect = '';
             })
             window.addEventListener('mdlTo01', event => {
                 $("#mdlProductoPaso01").modal('show');
@@ -504,7 +507,6 @@
             let isNormalProIns;
             let tempNormalProIns;
             let resizeProIns;
-            let imgProductoInsSelect = '';
             let crReload;
 
             $.ajaxSetup({

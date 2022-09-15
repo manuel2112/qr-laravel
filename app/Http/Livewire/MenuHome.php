@@ -76,6 +76,30 @@ class MenuHome extends Component
         $this->dispatchBrowserEvent('openMdlProductoAdd');
     }
 
+    public function openMdlProductoOrder(Grupo $grupo)
+    {
+        $this->emit('dataModalProductoOrder',$grupo);
+        $this->dispatchBrowserEvent('openMdlProductoOrder');
+    }
+
+    public function openMdlProductoVer(Producto $producto)
+    {
+        $this->emit('dataModalProductoVer',$producto);
+        $this->dispatchBrowserEvent('openMdlProductoVer');
+    }
+
+    public function openMdlProductoEdit(Producto $producto)
+    {
+        $this->emit('dataModalProductoEdit',$producto);
+        $this->dispatchBrowserEvent('openMdlProductoEdit');
+    }
+
+    public function openMdlProductoValores(Producto $producto)
+    {
+        $this->emit('dataModalProductoValores',$producto);
+        $this->dispatchBrowserEvent('openMdlProductoValores');
+    }
+
     public function closeModals()
     {      
         $this->dispatchBrowserEvent('closeModal');

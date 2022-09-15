@@ -49,7 +49,7 @@
     
                             <button 
                                 type="button" 
-                                class="btn btn-outline-primary"
+                                class="btn btn-outline-primary loading"
                                 wire:click="openMdlGrupoEdit({{ $grupo }})"
                                 title="EDITAR GRUPO">
                                 <i class="fas fa-edit"></i>
@@ -57,9 +57,8 @@
                             
                             <button 
                                 type= "button" 
-                                class= "btn btn-outline-primary" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#mdlOrderProductos"  
+                                class= "btn btn-outline-primary loading" 
+                                wire:click="openMdlProductoOrder({{ $grupo }})"  
                                 title= "ORDENAR PRODUCTOS">
                                 <i class="fas fa-arrows-alt"></i>
                             </button>
@@ -103,34 +102,31 @@
         
                                             <button 
                                                 type="button" 
-                                                class="btn btn-outline-primary" 
-                                                data-toggle="modal" 
-                                                data-target="#mdlVerProducto" 
+                                                class="btn btn-outline-primary loading"
+                                                wire:click="openMdlProductoVer({{ $producto }})" 
                                                 title="VER PRODUCTO">
                                                 <i class="fas fa-eye"></i>
                                             </button>
                                             
                                             <button 
                                                 type="button" 
-                                                class="btn btn-outline-primary" 
-                                                data-toggle="modal" 
-                                                data-target="#mdlEditProducto" 
+                                                class="btn btn-outline-primary loading"
+                                                wire:click="openMdlProductoEdit({{ $producto }})"  
                                                 title="EDITAR PRODUCTO">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             
                                             <button 
                                                 type="button" 
-                                                class="btn btn-outline-primary" 
-                                                data-toggle="modal" 
-                                                data-target="#mdlEditVP" 
+                                                class="btn btn-outline-primary loading"
+                                                wire:click="openMdlProductoValores({{ $producto }})" 
                                                 title="VARIACIÓN DE PRECIO">
                                                 <i class="fas fa-dollar-sign"></i>
                                             </button>
                                             
                                             <button 
                                                 type="button" 
-                                                class="btn btn-outline-primary" 
+                                                class="btn btn-outline-primary loading" 
                                                 data-toggle="modal" 
                                                 data-target="#mdlEditGaleria" 
                                                 title="GALERÍA DE IMÁGENES">
@@ -180,6 +176,10 @@
     <livewire:menu-grupo-edit />
     <livewire:menu-grupo-imagen />
     <livewire:menu-producto-add />
+    <livewire:menu-producto-order />
+    <livewire:menu-producto-ver />
+    <livewire:menu-producto-edit />
+    <livewire:menu-producto-valores />
 
     @push('scripts')
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -199,10 +199,30 @@
                 $("#mdlProductoPaso01").modal('show');
                 Swal.close();
             });
+            window.addEventListener('openMdlProductoOrder', event => {
+                $("#mdlOrderProductos").modal('show');
+                Swal.close();
+            });
+            window.addEventListener('openMdlProductoVer', event => {
+                $("#mdlVerProducto").modal('show');
+                Swal.close();
+            });
+            window.addEventListener('openMdlProductoEdit', event => {
+                $("#mdlEditProducto").modal('show');
+                Swal.close();
+            });
+            window.addEventListener('openMdlProductoValores', event => {
+                $("#mdlValorProducto").modal('show');
+                Swal.close();
+            });
             window.addEventListener('closeModal', event => {
                 $("#mdlGrupoImg").modal('hide');
                 $("#mdlEditGrupo").modal('hide');
                 $("#mdlProductoPaso01").modal('hide');
+                $("#mdlOrderProductos").modal('hide');
+                $("#mdlVerProducto").modal('hide');
+                $("#mdlEditProducto").modal('hide');
+                $("#mdlValorProducto").modal('hide');
             });
         </script>
         <script>

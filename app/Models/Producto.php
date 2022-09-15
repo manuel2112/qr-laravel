@@ -17,4 +17,12 @@ class Producto extends Model
         'link',
         'show',
     ];
+
+    public function valores(){
+        return $this->hasMany(ProductoVariacion::class)->where('flag', TRUE)->orderBy('id', 'asc');
+    }
+
+    public function imagenes(){
+        return $this->hasMany(ProductoImagen::class)->where('flag', TRUE)->orderBy('id', 'asc');
+    }
 }

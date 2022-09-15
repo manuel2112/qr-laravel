@@ -34,6 +34,12 @@ class MenuProductoAdd extends Component
         return view('livewire.menu-producto-add');
     }
 
+    public function dataModalProductoAdd(Grupo $grupo)
+    {
+        $this->idGrupo  = $grupo->id;
+        $this->title    = $grupo->grupo;
+    }
+
     public function addInput($i)
     {
         $i = $i + 1;
@@ -152,12 +158,6 @@ class MenuProductoAdd extends Component
         $this->close();
     }
 
-    public function dataModalProductoAdd(Grupo $grupo)
-    {
-        $this->idGrupo  = $grupo->id;
-        $this->title    = $grupo->grupo;
-    }
-
     function updateParent($texto) {
         $this->emit('reRenderParent');
         $this->emit('showMessage', $texto);
@@ -165,7 +165,7 @@ class MenuProductoAdd extends Component
 
     public function close()
     {
-        $this->reset(['nombre']);
+        $this->reset(['nombre','detalle','descripcion','nmbValor','precioValor','imagen','isLink','isShow']);
         $this->dispatchBrowserEvent('closeModals');
     }
 }

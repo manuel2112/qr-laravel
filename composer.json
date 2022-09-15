@@ -43,6 +43,7 @@
             "app/Helpers/date_helper.php",
             "app/Helpers/log_helper.php",
             "app/Helpers/image_helper.php",
+            "app/Helpers/number_helper.php",
             "app/Helpers/Slug.php"
         ]
     },
