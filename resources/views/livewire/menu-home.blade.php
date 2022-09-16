@@ -126,9 +126,8 @@
                                             
                                             <button 
                                                 type="button" 
-                                                class="btn btn-outline-primary loading" 
-                                                data-toggle="modal" 
-                                                data-target="#mdlEditGaleria" 
+                                                class="btn btn-outline-primary loading"
+                                                wire:click="openMdlGaleriaValores({{ $producto }})" 
                                                 title="GALERÍA DE IMÁGENES">
                                                 <i class="fas fa-images"></i>
                                             </button>
@@ -180,6 +179,7 @@
     <livewire:menu-producto-ver />
     <livewire:menu-producto-edit />
     <livewire:menu-producto-valores />
+    <livewire:menu-producto-galeria />
 
     @push('scripts')
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -215,6 +215,10 @@
                 $("#mdlValorProducto").modal('show');
                 Swal.close();
             });
+            window.addEventListener('openMdlGaleriaValores', event => {
+                $("#mdlGaleriaProducto").modal('show');
+                Swal.close();
+            });
             window.addEventListener('closeModal', event => {
                 $("#mdlGrupoImg").modal('hide');
                 $("#mdlEditGrupo").modal('hide');
@@ -223,6 +227,7 @@
                 $("#mdlVerProducto").modal('hide');
                 $("#mdlEditProducto").modal('hide');
                 $("#mdlValorProducto").modal('hide');
+                $("#mdlGaleriaProducto").modal('hide');
             });
         </script>
         <script>

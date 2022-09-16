@@ -22,13 +22,6 @@
 					
 					<div class="modal-body">
 
-                        <h3>PASO 2</h3>
-                        <small class="help-block text-secondary">
-                            CAMPOS DONDE SE INGRESARÁN EL/LOS VALORES DEL PRODUCTO.<br>
-                            EL NOMBRE/VALOR BASE SERÁ EL PRINCIPAL.<br>
-                            EL NOMBRE DEBE SER IDENTIFICATORIO (EJEMPLO LT, KG, PACK, ETC.)
-                        </small>
-
                         <div class="mt-3 mb-1">
                             <x-jet-label for="0_nmbValor" value="{{ __('Nombre') }}" />
                                 <div class="input-group">

@@ -457,8 +457,8 @@
 
 		</div>
 
-	</div>    
-    
+	</div>
+
     @push('scripts')
         <script>
             let imgProductoInsSelect = '';

@@ -17,4 +17,8 @@ class EmpresaPlan extends Model
         'hasta',
         'free',
     ];
+
+    public function plan(){
+        return $this->belongsTo(Plan::class);
+    }
 }

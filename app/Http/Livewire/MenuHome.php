@@ -100,6 +100,12 @@ class MenuHome extends Component
         $this->dispatchBrowserEvent('openMdlProductoValores');
     }
 
+    public function openMdlGaleriaValores(Producto $producto)
+    {
+        $this->emit('dataModalProductoGaleria',$producto);
+        $this->dispatchBrowserEvent('openMdlGaleriaValores');
+    }
+
     public function closeModals()
     {      
         $this->dispatchBrowserEvent('closeModal');
