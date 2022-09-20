@@ -3,6 +3,7 @@
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\TipoPagoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +31,7 @@ Route::get('/menu', MenuController::class )->middleware(['auth','verified'])->na
 Route::post('/menu/upload-img-grupo', [MenuController::class, 'uploadgrupoimg'])->name('menu.uploadgrupoimg');
 Route::post('/menu/upload-img-producto', [MenuController::class, 'uploadproductoimg'])->name('menu.uploadproductoimg');
 Route::post('/menu/upload-img-galeria', [MenuController::class, 'uploadgaleriaimg'])->name('menu.uploadgaleriaimg');
+
+Route::get('/tipopago', TipoPagoController::class )->middleware(['auth','verified'])->name('tipopago.index');
 
 require __DIR__.'/auth.php';

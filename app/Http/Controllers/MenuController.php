@@ -9,7 +9,7 @@ use App\Models\ProductoImagen;
 use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
-{    
+{
     public function __invoke()
     {        
         return view('menu.index');
