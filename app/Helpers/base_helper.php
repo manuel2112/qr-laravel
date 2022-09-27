@@ -14,3 +14,11 @@ if(!function_exists('urlQR'))
 		return $var;
 	}
 }
+
+if(!function_exists('iva'))
+{    
+	function iva()
+	{
+		return 19;
+	}
+}

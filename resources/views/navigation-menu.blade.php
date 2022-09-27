@@ -17,11 +17,14 @@
                 <x-jet-nav-link href="{{ route('empresa.index') }}" :active="request()->routeIs('empresa.index')">
                     {{ __('EMPRESA') }}
                 </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('tipopago.index') }}" :active="request()->routeIs('tipopago.index')">
+                    {{ __('TIPO DE PAGO') }}
+                </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('menu.index') }}" :active="request()->routeIs('menu.index')">
                     {{ __('MENÚ') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('tipopago.index') }}" :active="request()->routeIs('tipopago.index')">
-                    {{ __('TIPO DE PAGO') }}
+                <x-jet-nav-link href="{{ route('pay.index') }}" :active="request()->routeIs('pay.index')">
+                    {{ __('CENTRO DE PAGOS') }}
                 </x-jet-nav-link>
             </ul>
 

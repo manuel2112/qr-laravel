@@ -22,37 +22,38 @@ class EmpresaController extends Controller
     
     public function uploadCropImage(Request $request){
         
-        // $images = $request->isNormal == 'true' ? $request->imageNormal : $request->imageCrop ;
+        $isNormal   = $request->isNormal == 'true' ? TRUE : FALSE ;
+        $images     = $isNormal ? $request->imageNormal : $request->imageCrop ;
         
-        // $idUser  = Auth::id();
-        // $empresa = Empresa::where(['user_id' => $idUser])->first();
+        $idUser  = Auth::id();
+        $empresa = Empresa::where(['user_id' => $idUser])->first();
  
-        // list($type, $images) = explode(';', $images);
-        // list(, $images)      = explode(',', $images);
+        list($type, $images) = explode(';', $images);
+        list(, $images)      = explode(',', $images);
 
-        // if( $type == "data:image/png" ){
-        //     $ext = '.png';
-        // }else{
-        //     $ext = '.jpg';
-        // }
+        if( $type == "data:image/png" ){
+            $ext = '.png';
+        }else{
+            $ext = '.jpg';
+        }
         
-        // $images     = base64_decode($images);
-        // $image_name = Str::uuid() . $ext;
-        // $pathTh     = public_path('thumbnail/'.$image_name);
-        // file_put_contents($pathTh, $images);
+        $images     = base64_decode($images);
+        $image_name = Str::uuid() . $ext;
+        $pathTh     = public_path('thumbnail/'.$image_name);
+        file_put_contents($pathTh, $images);
 
-        // $folder = 'logotipo';
-        // $path = uploadImage($pathTh, $empresa->id, TRUE, $folder);
+        $folder = 'logotipo';
+        $path = uploadImage($pathTh, $empresa->id, TRUE, $folder, NULL, $isNormal);
 
-        // //UPDATE QR
-        // create_qr($path, $empresa);
+        //UPDATE QR
+        create_qr($path, $empresa);
 
-        // Empresa::where( 'id' ,$empresa->id)
-        //         ->update([
-        //             'logotipo'  => $path
-        //         ]);
+        Empresa::where( 'id' ,$empresa->id)
+                ->update([
+                    'logotipo'  => $path
+                ]);
 
-        // session()->flash('mensaje','El logotipo ha sido ingresado exitosamente');
-        // return response()->json(['url'=> route('empresa.index') ]);
+        session()->flash('mensaje','El logotipo ha sido ingresado exitosamente');
+        return response()->json(['url'=> route('empresa.index') ]);
     }
 }

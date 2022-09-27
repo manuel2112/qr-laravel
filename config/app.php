@@ -181,7 +181,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        LaravelQRCode\Providers\QRCodeServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -198,7 +197,8 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        LaravelQRCode\Providers\QRCodeServiceProvider::class
+        LaravelQRCode\Providers\QRCodeServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -215,7 +215,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'QRCode' => LaravelQRCode\Facades\QRCode::class,
-        'Image' => 'Intervention\Image\Facades\Image'
+        'Image' => 'Intervention\Image\Facades\Image',
+        'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
     ])->toArray(),
 
 ];

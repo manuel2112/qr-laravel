@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\EmpresaController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PayController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\TipoPagoController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GeneradorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +35,11 @@ Route::post('/menu/upload-img-producto', [MenuController::class, 'uploadproducto
 Route::post('/menu/upload-img-galeria', [MenuController::class, 'uploadgaleriaimg'])->name('menu.uploadgaleriaimg');
 
 Route::get('/tipopago', TipoPagoController::class )->middleware(['auth','verified'])->name('tipopago.index');
+
+Route::get('/centro-de-pagos', [PayController::class, 'index'])->middleware(['auth','verified'])->name('pay.index');
+Route::get('/centro-de-pagos/pay', [PayController::class, 'pay'])->name('pay.pay');
+Route::get('/centro-de-pagos/result', [PayController::class, 'result'])->name('pay.result');
+
+Route::get('/print/pago/{id}', [GeneradorController::class, 'pago'])->name('pdf.pago');
 
 require __DIR__.'/auth.php';
