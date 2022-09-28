@@ -1,0 +1,15 @@
+FECHA: 2022-09-28 20:14:13
+vci: TSY
+amount: 53550
+status: AUTHORIZED
+buyOrder: 68
+sessionId: FBQR-1664406820
+card_number: 2032
+accountingDate: 0928
+transactionDate: 2022-09-28T23:13:42.048Z
+authorizationCode: 1617
+paymentTypeCode: NC
+responseCode: 0
+installmentsAmount: 8925
+installmentsNumber: 6
+balance: 

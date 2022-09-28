@@ -1,0 +1,75 @@
+FECHA: 2022-09-28 17:09:32
+vci: TSY
+amount: 23800
+status: AUTHORIZED
+buyOrder: 67
+sessionId: FBQR-1664395729
+card_number: 2032
+accountingDate: 0928
+transactionDate: 2022-09-28T20:08:49.789Z
+authorizationCode: 1617
+paymentTypeCode: NC
+responseCode: 0
+installmentsAmount: 1984
+installmentsNumber: 12
+balance: 
+FECHA: 2022-09-28 17:32:29
+vci: TSY
+amount: 23800
+status: AUTHORIZED
+buyOrder: 67
+sessionId: FBQR-1664395729
+card_number: 2032
+accountingDate: 0928
+transactionDate: 2022-09-28T20:08:49.789Z
+authorizationCode: 1617
+paymentTypeCode: NC
+responseCode: 0
+installmentsAmount: 1984
+installmentsNumber: 12
+balance: 
+FECHA: 2022-09-28 19:35:45
+vci: TSY
+amount: 23800
+status: AUTHORIZED
+buyOrder: 67
+sessionId: FBQR-1664395729
+card_number: 2032
+accountingDate: 0928
+transactionDate: 2022-09-28T20:08:49.789Z
+authorizationCode: 1617
+paymentTypeCode: NC
+responseCode: 0
+installmentsAmount: 1984
+installmentsNumber: 12
+balance: 
+FECHA: 2022-09-28 19:36:39
+vci: TSY
+amount: 23800
+status: AUTHORIZED
+buyOrder: 67
+sessionId: FBQR-1664395729
+card_number: 2032
+accountingDate: 0928
+transactionDate: 2022-09-28T20:08:49.789Z
+authorizationCode: 1617
+paymentTypeCode: NC
+responseCode: 0
+installmentsAmount: 1984
+installmentsNumber: 12
+balance: 
+FECHA: 2022-09-28 20:08:56
+vci: TSY
+amount: 23800
+status: AUTHORIZED
+buyOrder: 67
+sessionId: FBQR-1664395729
+card_number: 2032
+accountingDate: 0928
+transactionDate: 2022-09-28T20:08:49.789Z
+authorizationCode: 1617
+paymentTypeCode: NC
+responseCode: 0
+installmentsAmount: 1984
+installmentsNumber: 12
+balance: 

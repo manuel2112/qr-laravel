@@ -70,7 +70,7 @@
             </tr>
             <tr>
                 <td>FECHA</td>
-                <td>{{ Carbon\Carbon::parse($compra->orden)->format('d-m-Y H:m') }}</td>
+                <td>{{ Carbon\Carbon::parse($compra->created_at)->format('d-m-Y H:i') }}</td>
             </tr>
             <tr>
                 <td>PAGO CON</td>

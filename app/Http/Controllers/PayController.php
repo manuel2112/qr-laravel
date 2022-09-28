@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Compra;
-use App\Models\ComprasRequest;
 use Carbon\Carbon;
+use App\Models\Compra;
+use App\Mail\PayMailable;
 use Illuminate\Http\Request;
+use App\Models\ComprasRequest;
 use Transbank\Webpay\WebpayPlus;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Transbank\Webpay\WebpayPlus\Transaction;
 
@@ -60,6 +62,10 @@ class PayController extends Controller
     public function result(Request $request){
 
         $response = '';
+        $existe = Compra::where(['token' => $request->token_ws, 'status' => 2])->first();
+        if( $existe ){
+            return redirect()->route('pay.index');
+        }
 
         if( $request->token_ws ){
             $response = (new Transaction)->commit($request->token_ws);
@@ -82,13 +88,15 @@ class PayController extends Controller
             // SI EL PAGO ESTÁ AUTORIZADO
             if( $response->status == 'AUTHORIZED' ){
 
-                //CREAR PDF CON DETALLE DE COMPRA
-
                 //INGRESAR PLANES COMPRADOS
+                $compra = Compra::where('token', $request->token_ws)->first();
+                calcularMembresia($compra);
 
-                //ENVIAR MAIL
+                //ENVIAR MAIL COMPROBANTE DE PAGO
+                Mail::to(auth()->user()->email)->send(new PayMailable($compra));
 
                 //CREAR LOG
+                payLog($compra->orden, $response);
 
             }
 

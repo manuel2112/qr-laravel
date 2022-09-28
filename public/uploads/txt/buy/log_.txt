@@ -1,0 +1,15 @@
+FECHA: 2022-09-28 17:00:57
+vci: 
+amount: 
+status: 2
+buyOrder: 
+sessionId: 
+card_number: 
+accountingDate: 
+transactionDate: 
+authorizationCode: 
+paymentTypeCode: 
+responseCode: 
+installmentsAmount: 
+installmentsNumber: 
+balance: 

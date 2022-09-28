@@ -9,13 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    // protected $id;
-
-    // public function __construct()
-    // {
-    //     $this->id = Auth::id(); 
-    //     dd($this->id);       
-    // }
 
     public function index()
     {

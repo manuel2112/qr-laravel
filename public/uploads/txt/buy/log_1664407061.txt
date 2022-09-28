@@ -1,0 +1,15 @@
+FECHA: 2022-09-28 20:18:00
+vci: TSY
+amount: 11900
+status: AUTHORIZED
+buyOrder: 69
+sessionId: FBQR-1664407061
+card_number: 7763
+accountingDate: 0928
+transactionDate: 2022-09-28T23:17:40.710Z
+authorizationCode: 1415
+paymentTypeCode: VD
+responseCode: 0
+installmentsAmount: 
+installmentsNumber: 0
+balance: 

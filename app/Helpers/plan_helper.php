@@ -81,3 +81,82 @@ if(!function_exists('downPlan'))
 		}
         }
 }
+
+if(!function_exists('calcularMembresia'))
+{
+        function calcularMembresia($compra)
+        {
+                $idUser         = $compra->user_id;
+                $idPlan         = $compra->plan_id;
+                $idCompra       = $compra->id;
+                $meses          = $compra->meses;
+                $free           = isset($compra->FREE) ? TRUE : FALSE;
+                
+                //DAR DE BAJA PLANES DE BRONCES ASOCIADOS AL USUARIO
+                EmpresaPlan::where([ 'user_id' => $idUser, 'flag' => TRUE, 'plan_id' => 1 ])->update([ 'flag' => FALSE ]);
+
+                //capturar membresía existente
+                $membresia = EmpresaPlan::where([ 'user_id' => $idUser, 'flag' => TRUE ])->orderBy('id', 'desc')->limit(1)->first();
+                $inicio         = !empty($membresia) ? $membresia->hasta : fechaNow();
+                
+                if( $idPlan != 1 ){
+
+                        for( $i = 0 ; $i < $meses ; $i++ ){
+                                $attr           = calcMembresiaExistente($inicio);
+                                $start          = $attr->start;
+                                $end            = $attr->end;
+                                $inicio         = $end;
+                                
+                                EmpresaPlan::create([
+                                        'user_id'       => $idUser,
+                                        'pago_id'       => $idCompra,
+                                        'plan_id'       => $idPlan,
+                                        'desde'         => $start,
+                                        'hasta'         => $end,
+                                        'free'          => $free
+                                    ]);
+                        }
+
+                }else{
+                        $attr           = calcMembresiaExistente($inicio);                    
+                        $start          = $attr->start;
+                        $end            = $attr->end;
+                                
+                        EmpresaPlan::create([
+                                'user_id'       => $idUser,
+                                'pago_id'       => $idCompra,
+                                'plan_id'       => $idPlan,
+                                'desde'         => $start,
+                                'hasta'         => $end,
+                                'free'          => TRUE
+                            ]);
+                }
+                
+                //RESET VISTA
+                Empresa::where('user_id', $idUser)->update([ 'vista' => TRUE ]);
+                //RESET MEMBRESÍA
+                Empresa::where('user_id', $idUser)->update([ 'membresia' => TRUE ]);
+        }
+}
+
+if(!function_exists('calcMembresiaExistente'))
+{
+	function calcMembresiaExistente($inicio)
+	{
+		$json = '{
+                                "start": "'.$inicio.'",
+                                "end": "'.hastaDate($inicio).'"
+                        }';
+		
+		return json_decode($json);
+	}
+}
+
+if(!function_exists('hastaDate'))
+{
+	function hastaDate($date)
+	{
+		$var = date('Y-m-d H:i:s', strtotime($date . ' + 1 months'));
+		return $var;
+	}
+}

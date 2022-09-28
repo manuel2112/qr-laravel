@@ -14,3 +14,16 @@ if(!function_exists('logCron'))
 		fclose($myfile);
 	}
 }
+
+if(!function_exists('logCompra'))
+{
+	function logCompra($orden,$texto)
+	{
+		$directorio = public_path('uploads/txt/buy/');
+		createDir($directorio);
+		$ruta 		= $directorio . "log_". $orden .".txt";
+		$myfile     = fopen($ruta, "a+") or die("Unable to open file!");
+		fwrite($myfile, $texto);
+		fclose($myfile);
+	}
+}
