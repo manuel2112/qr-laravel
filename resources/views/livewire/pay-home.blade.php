@@ -40,7 +40,7 @@
                                     <li>&nbsp;</li>                                                    
                                 @endif
                             </ul>
-                            <div class="d-grid gap-2">
+                            <div class="d-grid">
                                 <button 
                                     type="button" 
                                     class="btn btn-lg btn-primary loading"

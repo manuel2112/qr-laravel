@@ -3,6 +3,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item active" aria-current="page">{{ __('Centro de Pagos') }}</li>
+                <li class="breadcrumb-item"><a href="{{ route('pay.miscompras') }}">Mis Compras</a></li>
                 <li class="breadcrumb-item"><a href="#" class="btn btn-outline-warning" target="_blank" style="font-size: 10px"><i class="fas fa-question"></i></a></li>
             </ol>
         </nav>

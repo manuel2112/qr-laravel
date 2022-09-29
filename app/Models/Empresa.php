@@ -23,4 +23,8 @@ class Empresa extends Model
     public function ciudad(){
         return $this->belongsTo(Commune::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

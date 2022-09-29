@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PayController;
 use App\Http\Controllers\HomeController;
@@ -39,6 +40,9 @@ Route::get('/tipopago', TipoPagoController::class )->middleware(['auth','verifie
 Route::get('/centro-de-pagos', [PayController::class, 'index'])->middleware(['auth','verified'])->name('pay.index');
 Route::get('/centro-de-pagos/pay', [PayController::class, 'pay'])->name('pay.pay');
 Route::get('/centro-de-pagos/result', [PayController::class, 'result'])->name('pay.result');
+Route::get('/centro-de-pagos/mis-compras', [PayController::class, 'miscompras'])->name('pay.miscompras');
+
+Route::get('/contacto', [ContactoController::class, 'index'])->middleware(['auth','verified'])->name('contacto.index');
 
 Route::get('/print/pago/{id}', [GeneradorController::class, 'pago'])->name('pdf.pago');
 

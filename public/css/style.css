@@ -710,3 +710,11 @@ small{
     font-size: 0.8rem;
     line-height: 5px !important;
 }
+
+ol.breadcrumb li a {
+    color: #666;
+    text-decoration: none;
+}
+ol.breadcrumb li a:hover {
+    text-decoration: underline;
+}

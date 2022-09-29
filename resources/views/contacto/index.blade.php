@@ -2,8 +2,7 @@
     <x-slot name="header">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Centro de Pagos') }}</li>
-                <li class="breadcrumb-item"><a href="{{ route('pay.miscompras') }}">Mis Compras</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __('Contacto') }}</li>
                 <li class="breadcrumb-item"><a href="#" class="btn btn-outline-warning" target="_blank" style="font-size: 10px"><i class="fas fa-question"></i></a></li>
             </ol>
         </nav>
@@ -14,7 +13,7 @@
             <div class="card shadow bg-light">
                 <div class="card-body bg-white px-5 py-1 border-bottom rounded-top" id="pagos">
 
-                    <livewire:pay-home />
+                    <livewire:contacto-home />
 
                 </div>
             </div>

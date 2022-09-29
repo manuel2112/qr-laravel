@@ -26,6 +26,9 @@
                 <x-jet-nav-link href="{{ route('pay.index') }}" :active="request()->routeIs('pay.index')">
                     {{ __('CENTRO DE PAGOS') }}
                 </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('contacto.index') }}" :active="request()->routeIs('contacto.index')">
+                    {{ __('CONTACTO') }}
+                </x-jet-nav-link>
             </ul>
 
             <!-- Right Side Of Navbar -->

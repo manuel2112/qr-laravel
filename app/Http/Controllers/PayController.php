@@ -64,7 +64,7 @@ class PayController extends Controller
         $response = '';
         $existe = Compra::where(['token' => $request->token_ws, 'status' => 2])->first();
         if( $existe ){
-            return redirect()->route('pay.index');
+            return redirect()->route('pay.miscompras');
         }
 
         if( $request->token_ws ){
@@ -110,5 +110,14 @@ class PayController extends Controller
             'request'  => $request,
             'response' => $response
         ]);
+    }
+
+    public function miscompras(){
+
+        $compras = Compra::where( ['user_id' => auth()->user()->id, 'status' => 2 ] )->orderBy('id', 'desc')->get();
+        
+        return view('pay.miscompras', [
+            'compras'  => $compras
+        ]);        
     }
 }
