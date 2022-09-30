@@ -15,6 +15,7 @@ class EmpresaPlan extends Model
         'plan_id',
         'desde',
         'hasta',
+        'en_uso',
         'free',
     ];
 

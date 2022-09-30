@@ -17,6 +17,9 @@
                 <x-jet-nav-link href="{{ route('empresa.index') }}" :active="request()->routeIs('empresa.index')">
                     {{ __('EMPRESA') }}
                 </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('miplan.index') }}" :active="request()->routeIs('miplan.index')">
+                    {{ __('MI PLAN') }}
+                </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('tipopago.index') }}" :active="request()->routeIs('tipopago.index')">
                     {{ __('TIPO DE PAGO') }}
                 </x-jet-nav-link>

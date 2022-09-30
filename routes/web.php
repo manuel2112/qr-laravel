@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PayController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MiPlanController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\TipoPagoController;
 use App\Http\Controllers\GeneradorController;
 
@@ -43,6 +44,8 @@ Route::get('/centro-de-pagos/result', [PayController::class, 'result'])->name('p
 Route::get('/centro-de-pagos/mis-compras', [PayController::class, 'miscompras'])->name('pay.miscompras');
 
 Route::get('/contacto', [ContactoController::class, 'index'])->middleware(['auth','verified'])->name('contacto.index');
+
+Route::get('/mi-plan', [MiPlanController::class, 'index'])->middleware(['auth','verified'])->name('miplan.index');
 
 Route::get('/print/pago/{id}', [GeneradorController::class, 'pago'])->name('pdf.pago');
 

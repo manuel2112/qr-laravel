@@ -18,6 +18,8 @@ if(!function_exists('instanciarPlan'))
                     'plan_id'   => $plan,
                     'desde'     => Carbon::now(),
                     'hasta'     => Carbon::now()->addMonths(1),
+                    'en_uso'    => TRUE,
+                    'en_uso'    => TRUE,
                     'free'      => TRUE
                 ]);
         }
@@ -56,7 +58,7 @@ if(!function_exists('downPlan'))
         function downPlan($empresa)
         {
                 $idUser = $empresa->user_id;
-                $mdl    = EmpresaPlan::where(['user_id' => $idUser, 'flag' => TRUE])->first();
+                $mdl    = EmpresaPlan::where(['user_id' => $idUser, 'en_uso' => TRUE ])->first();
 
 		$ahora 		= Carbon::now();
 		$hasta          = $mdl->hasta;
@@ -67,14 +69,17 @@ if(!function_exists('downPlan'))
 			$plan		= $mdl->plan_id;
 			$idEmpPlan	= $mdl->id;
                         
-                        EmpresaPlan::where('user_id', $idUser)
-                                        ->where('id', $idEmpPlan)
-                                        ->update(['flag' => FALSE]);
+                        EmpresaPlan::where(['user_id' => $idUser, 'id' => $idEmpPlan ])
+                                          ->update(['flag' => FALSE, 'en_uso' => FALSE]);
                                         
                         $membresiasTotal = EmpresaPlan::where(['user_id' => $idUser, 'flag' => TRUE])->get();
 			if( count($membresiasTotal) == 0 ){
                                 instanciarPlan($empresa,1);
-			}
+			}else{
+                                $next = EmpresaPlan::where([ 'user_id' => $idUser, 'flag' => TRUE, 'en_uso' => FALSE ])->orderBy('id', 'asc')->first();
+                                EmpresaPlan::where(['user_id' => $idUser, 'id' => $next->id ])
+                                           ->update(['en_uso' => TRUE]);
+                        }
 
 			$txtCron = $ahora . ' USER: ' . $idUser . ' IDCAMPO: '.$idEmpPlan.' PLAN: ' .$plan. "\n";
                         logCron($file,$txtCron);
