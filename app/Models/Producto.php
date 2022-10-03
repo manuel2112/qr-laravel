@@ -22,6 +22,10 @@ class Producto extends Model
         return $this->hasMany(ProductoVariacion::class)->where('flag', TRUE)->orderBy('id', 'asc');
     }
 
+    public function base(){
+        return $this->hasOne(ProductoVariacion::class)->where(['flag'=> TRUE, 'base'=> TRUE]);
+    }
+
     public function imagenes(){
         return $this->hasMany(ProductoImagen::class)->where('flag', TRUE)->orderBy('id', 'asc');
     }

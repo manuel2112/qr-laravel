@@ -30,7 +30,6 @@ return new class extends Migration
             $table->integer('ciudad_id')->unsigned();
             $table->foreign('ciudad_id')->references('id')->on('communs');
             $table->string('referido',64);
-            $table->boolean('is_admin')->default(0);
             $table->boolean('vista')->default(0);
             $table->boolean('pago')->default(0);
             $table->boolean('membresia')->default(1);

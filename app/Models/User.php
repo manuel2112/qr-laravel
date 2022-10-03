@@ -58,4 +58,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function grupos(){
+        return $this->hasMany(Grupo::class)->where(['show' => TRUE, 'flag' => TRUE])->orderBy('order', 'asc');
+    }
 }
